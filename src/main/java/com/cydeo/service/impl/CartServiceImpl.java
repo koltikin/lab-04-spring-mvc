@@ -26,7 +26,7 @@ public class CartServiceImpl implements CartService {
         // todo implement method using stream
 
         return CART_LIST.stream().filter(cartList->cartList.getId().equals(cartId))
-                .map(Cart::getCartItemList).toList().get(0);
+                .findAny().orElseThrow().getCartItemList();
     }
 
     @Override
